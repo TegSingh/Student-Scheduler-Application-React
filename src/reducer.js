@@ -16,6 +16,18 @@ const reducer = (state, action) => {
         return newState;
     }
 
+    if (action.type === 'REGISTER_PERSON') {
+        const person = action.payload
+        console.log(`Reducer: Register Person name: ${person.name} email: ${person.email} password: ${person.password}`)
+        return { ...state, person: person }
+    }
+
+    if (action.type === 'ADD_TODO') {
+        const todo = action.payload
+        console.log(`Reducer: Add Todo Name: ${todo.name} Due Date: ${todo.due_date} Date Added: ${todo.date_added} Person ID: ${todo.person_id}`)
+        return { ...state, todo: todo }
+    }
+
 }
 
 

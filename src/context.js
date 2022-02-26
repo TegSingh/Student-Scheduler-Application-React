@@ -7,7 +7,9 @@ const AppContext = React.createContext()
 // Define the default state for the reducer hook
 const defaultState = {
     seeLoginForm: false,
-    seeRegisterForm: false
+    seeRegisterForm: false,
+    person: {},
+    todo: {}
 };
 
 const AppProvider = ({ children }) => {
@@ -26,12 +28,24 @@ const AppProvider = ({ children }) => {
         dispatch({ type: 'SHOW_REGISTER_FORM' })
     }
 
+    const registerPerson = (person) => {
+        console.log(`Context: Register Form: name: ${person.name} email: ${person.email} password: ${person.password}`)
+        dispatch({ type: 'REGISTER_PERSON', payload: person })
+    }
+
+    const addTodo = (todo) => {
+        console.log(`Context: Add Todo: Name: ${todo.name} Due Date: ${todo.due_date} Date Added: ${todo.date_added} Person ID: ${todo.person_id}`)
+        dispatch({ type: 'ADD_TODO', payload: todo })
+    }
+
     return (
         <AppContext.Provider
             value={{
                 ...state,
                 showLoginForm,
-                showRegisterForm
+                showRegisterForm,
+                registerPerson,
+                addTodo
             }}
         >
             {children}

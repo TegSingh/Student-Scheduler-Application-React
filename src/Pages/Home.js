@@ -5,11 +5,11 @@ import { useGlobalContext } from "../context";
 
 const Home = () => {
 
-    const { seeLoginForm, seeRegisterForm, showLoginForm, showRegisterForm } = useGlobalContext();
+    const { seeLoginForm, seeRegisterForm, showLoginForm, showRegisterForm, person } = useGlobalContext();
 
     useEffect(() => {
-        console.log(`Component: HOME: seeLoginForm = ${seeLoginForm} seeRegisterForm = ${seeRegisterForm}`)
-    }, [seeLoginForm, seeRegisterForm])
+        console.log(`Component: HOME: seeLoginForm = ${seeLoginForm} seeRegisterForm = ${seeRegisterForm} person = ${person.name} ${person.email}`)
+    }, [seeLoginForm, seeRegisterForm, person])
 
     return (
         <React.Fragment>
