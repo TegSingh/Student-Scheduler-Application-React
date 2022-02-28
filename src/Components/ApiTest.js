@@ -72,4 +72,4 @@ const ApiTest = () => {
     )
 }
 
-export default ApiTest
+export default ApiTest;

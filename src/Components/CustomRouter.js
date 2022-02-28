@@ -14,7 +14,7 @@ const CustomRouter = () => {
                 <Link to="/todos">Todos</Link> */}
                 <Routes>
                     <Route exact path="/" element={<Home />} />
-                    <Route exact path="/todos" element={<Todos />} />
+                    <Route exact path="/todos/:person_id" element={<Todos />} />
                 </Routes>
             </Router>
         </React.Fragment>

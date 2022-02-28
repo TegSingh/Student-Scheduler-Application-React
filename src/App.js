@@ -17,7 +17,7 @@ const App = () => {
         <React.Fragment>
             {/* <Home /> */}
             <CustomRouter />
-            <ApiTest />
+            {/* <ApiTest /> */}
         </React.Fragment>
     );
 }

@@ -5,8 +5,11 @@ const getRequest = (url) => {
     console.log("GET REQUEST: ", url);
     axios.get(url)
         .then(response => {
-            console.log("Request Status: ", response.status);
-            console.log("Data: ", response.data);
+            console.log("GET REQUEST: Request Status: ", response.status);
+            if (response.status === 200) {
+                console.log("GET REQUEST: Data: ", response.data);
+                return response.data;
+            }
         })
 }
 
