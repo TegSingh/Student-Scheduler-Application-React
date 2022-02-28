@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
+import deleteRequest from '../Hooks/deleteRequest';
 import getRequest from '../Hooks/getRequest'
 import postRequest from '../Hooks/postRequest'
+import putRequest from '../Hooks/putRequest';
 
 const ApiTest = () => {
 
@@ -28,9 +30,38 @@ const ApiTest = () => {
             "name": "Front End for Scheduling Application",
             "due_date": "2022-03-03",
             "date_added": "2022-02-26",
-            "person_id": 3
+            "person_id": 2
         }
         postRequest("http://localhost:8080/api/todo", todo)
+
+        // PUT Request
+        console.log("Update a Person with a provided ID")
+        const personID = 2
+        const updatePerson = {
+            "name": "Person PQR",
+            "email": "person@PQR.com",
+            "password": "newpassword"
+        }
+        putRequest(`http://localhost:3000/api/person/${personID}`, updatePerson)
+
+        console.log("Update a Todo with a provided ID")
+        const todoID = 3
+        const updateTodo = {
+            "name": "API calls for Scheduling Application in React",
+            "due_date": "2022-03-01",
+            "date_added": "2022-02-27",
+            "person_id": 2
+        }
+        putRequest(`http://localhost:3000/api/todo/${todoID}`, updateTodo)
+
+        // DELETE Request
+        console.log("Delete a Person with a provided ID");
+        const deletePersonID = 3;
+        deleteRequest(`http://localhost:3000/api/person/${deletePersonID}`);
+
+        console.log("Delete a Todo with a provided ID")
+        const deleteTodoID = 4;
+        deleteRequest(`http://localhost:3000/api/todo/${deleteTodoID}`);
 
     }, []);
 
