@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import TodoForm from '../Components/TodoForm';
-import getRequest from '../Hooks/getRequest';
+import getRequest from '../Services/getRequest';
 import TodoList from '../Components/TodoList';
 
 
@@ -16,13 +16,16 @@ const Todos = () => {
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {
-        // Make get request for todos specific to a person
-        const request_url = `http://localhost:3000/api/person/${person_id}/todos`
-        const request_result = getRequest(request_url);
-        console.log("Component: TODOS: Request result: ", request_result);
-        setTodos(request_result);
+        const fetch_todos = async () => {
+            const request_url = `/api/person/${person_id}/todos`
+            const request_result = await getRequest(request_url);
+            console.log("Component: TODOS: Request result: ", request_result.data);
 
-    }, [todos])
+            // Make get request for todos specific to a person
+            setTodos(request_result.data);
+        }
+        fetch_todos();
+    }, [])
 
     return (
         <React.Fragment>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import putRequest from '../Hooks/putRequest'
-import deleteRequest from '../Hooks/deleteRequest'
+import putRequest from '../Services/putRequest'
+import deleteRequest from '../Services/deleteRequest'
 
 const TodoList = ({ todos }) => {
 
@@ -18,13 +18,13 @@ const TodoList = ({ todos }) => {
     return (
         <React.Fragment>
             {
-                todos.map(({ id, name, due_date, date_added, person_id }) => {
+                todos.map((t, id) => {
                     return (<div className="todo-div" key={id}>
-                        <p>{name}</p>
-                        <p>{due_date}</p>
-                        <p>{date_added}</p>
-                        <button onClick={(id) => handlePut(id)} className="update-button">Update</button>
-                        <button onClick={(id) => handleDelete(id)} className="delete-button">Delete</button>
+                        <p>{t?.name}</p>
+                        <p>{t?.due_date}</p>
+                        <p>{t?.date_added}</p>
+                        <button onClick={(e) => handlePut(t?.id)} className="update-button">Update</button>
+                        <button onClick={(e) => handleDelete(t?.id)} className="delete-button">Delete</button>
                     </div>)
                 })
             }

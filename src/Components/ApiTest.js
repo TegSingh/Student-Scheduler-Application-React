@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import deleteRequest from '../Hooks/deleteRequest';
-import getRequest from '../Hooks/getRequest'
-import postRequest from '../Hooks/postRequest'
-import putRequest from '../Hooks/putRequest';
+import deleteRequest from '../Services/deleteRequest';
+import getRequest from '../Services/getRequest'
+import postRequest from '../Services/postRequest'
+import putRequest from '../Services/putRequest';
 
 const ApiTest = () => {
 
@@ -42,7 +42,7 @@ const ApiTest = () => {
             "email": "person@PQR.com",
             "password": "newpassword"
         }
-        putRequest(`http://localhost:3000/api/person/${personID}`, updatePerson)
+        putRequest(`http://localhost:8080/api/person/${personID}`, updatePerson)
 
         console.log("Update a Todo with a provided ID")
         const todoID = 3
@@ -52,16 +52,16 @@ const ApiTest = () => {
             "date_added": "2022-02-27",
             "person_id": 2
         }
-        putRequest(`http://localhost:3000/api/todo/${todoID}`, updateTodo)
+        putRequest(`http://localhost:8080/api/todo/${todoID}`, updateTodo)
 
         // DELETE Request
         console.log("Delete a Person with a provided ID");
         const deletePersonID = 3;
-        deleteRequest(`http://localhost:3000/api/person/${deletePersonID}`);
+        deleteRequest(`http://localhost:8080/api/person/${deletePersonID}`);
 
         console.log("Delete a Todo with a provided ID")
         const deleteTodoID = 4;
-        deleteRequest(`http://localhost:3000/api/todo/${deleteTodoID}`);
+        deleteRequest(`http://localhost:8080/api/todo/${deleteTodoID}`);
 
     }, []);
 
